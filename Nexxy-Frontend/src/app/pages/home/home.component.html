@@ -1,0 +1,122 @@
+<!-- banner start -->
+<div class="containt-fluid">
+  <div id="carouselExampleDark" class="carousel carousel-dark slide">
+    <div class="carousel-inner">
+      <div
+        class="carousel-item"
+        data-bs-interval="10000"
+        *ngFor="let b of bannerResult; let i = index"
+        [ngClass]="{ active: i === 0 }"
+        (mouseenter)="playVideo(b)"
+        (mouseleave)="b.movie.showVideo=false"
+      >
+        <img
+          
+          src="https://image.tmdb.org/t/p/original/{{ b.movie.backdrop_path || '' }}"
+          class="d-block w-100"
+          alt="..."
+          
+        />
+        <div class="carousel-caption d-none d-md-block">
+          <h2>{{ b.movie.original_title || "Unknown Title" }}</h2>
+          <p style="font-size: 25px">{{ b.movie.overview || "Unknown overview" }}</p>
+        </div>
+        <div *ngIf="b.movie.showVideo" class="video-overlay">
+          <iframe
+            *ngIf="youtubeUrl"
+            width="560"
+            height="315"
+            [src]="youtubeUrl | safe"
+            frameborder="50"
+            allowfullscreen
+          ></iframe>
+        </div>
+      </div>
+    </div>
+    <button
+      class="carousel-control-prev"
+      type="button"
+      data-bs-target="#carouselExampleDark"
+      data-bs-slide="prev"
+    >
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+    <button
+      class="carousel-control-next"
+      type="button"
+      data-bs-target="#carouselExampleDark"
+      data-bs-slide="next"
+    >
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </button>
+  </div>
+</div>
+<!-- banner end  -->
+<!-- Your HTML template -->
+<h1 style="color: white">Currently Trending Movies</h1>
+<div *ngIf="carouselItems && carouselItems.length > 0">
+  <div id="trendingmoviecarousel" class="carousel carousel-dark slide mt-3">
+    <div class="carousel-inner">
+      <div
+        class="trendingcarousel"
+        *ngFor="let slice of carouselItems; let i = index"
+      >
+        <div class="carousel-item" [ngClass]="{ active: i === 0 }">
+          <div class="row">
+            <div class="col-md-2" *ngFor="let item of slice">
+              <div class="card" >
+                <div class="card-img">
+                  <div
+                    class="video-container"
+                    (mouseenter)="playVideo(item)"
+                    (mouseleave)="item.movie.showVideo= false"
+                    
+                  >
+                    <img
+                      src="https://image.tmdb.org/t/p/original/{{
+                        item.movie.poster_path || ''
+                      }}"
+                      class="d-block w-100"
+                      alt="..."
+                      
+                    />
+                    <div *ngIf="item.movie.showVideo" class="video-overlay">
+                      <iframe
+                        *ngIf="youtubeUrl"
+                        width="560"
+                        height="315"
+                        [src]="youtubeUrl | safe"
+                        frameborder="0"
+                        allowfullscreen
+                      ></iframe>
+                      <div class="clickable-overlay" (click)="navigate(item.movie)"></div>
+                    </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <button
+      class="carousel-control-prev"
+      type="button"
+      data-bs-target="#trendingmoviecarousel"
+      data-bs-slide="prev"
+    >
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+    <button
+      class="carousel-control-next"
+      type="button"
+      data-bs-target="#trendingmoviecarousel"
+      data-bs-slide="next"
+    >
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </button>
+  </div>
+</div>
