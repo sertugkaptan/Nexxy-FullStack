@@ -39,11 +39,12 @@ export class HomeComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
-    console.log('test',this.service.getMovies());
     
     const movieDetails: MovieDetailsResolved = this.route.snapshot.data['data'];
+    this.service.getMovies();
     this.bannerSub = movieDetails.bannerMovies.subscribe((data) => {
       this.bannerResult = data;
+      this.service.createMovie(data[0].movie);
     });
     this.trendingSub = movieDetails.trendingMovies.subscribe((data) => {
       this.carouselItems = this.pipe.transform(data, 6);

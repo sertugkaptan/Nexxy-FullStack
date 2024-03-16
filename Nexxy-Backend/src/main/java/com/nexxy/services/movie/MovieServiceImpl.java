@@ -2,14 +2,11 @@ package com.nexxy.services.movie;
 
 import com.nexxy.entities.movie.Movie;
 import com.nexxy.repository.MovieRepository;
-import org.slf4j.ILoggerFactory;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.List;
 @Service
 public class MovieServiceImpl implements MovieService{
@@ -19,7 +16,12 @@ public class MovieServiceImpl implements MovieService{
 
     @Override
     public List<Movie> getBannerMovies() {
-        logger.debug("1");
-        return new ArrayList<>();
+        return movieRepository.findAll();
+    }
+
+    @Override
+    public Movie addMovies(Movie movie) {
+
+        return movieRepository.save(movie);
     }
 }

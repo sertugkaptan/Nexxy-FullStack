@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, forkJoin, map } from 'rxjs';
 import { MovieDetails } from '../Entities/moviedetails/MovieDetails';
 import { VideoInformation } from '../Entities/videoinformation/VideoInformation';
+import { Movie } from '../Entities/movie/Movie';
 
 @Injectable({
   providedIn: 'root',
@@ -12,7 +13,9 @@ export class MovieApiServiceService {
 
   baseurl = 'https://api.themoviedb.org/3';
   apikey = '08cc33bd5ae3a747598ce2ad84376e66';
-
+  httpOptions = {
+    headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
+  };
   //bannerapidata
 
   bannerApiData(): Observable<any> {
@@ -21,8 +24,9 @@ export class MovieApiServiceService {
     );
   }
   getMovies(): Observable<any> {
-    return this.http.get(
-      `http://localhost:8080/movies`
+    
+    return this.http.get<any>(
+      'http://localhost:8080/web/api/movies'
     );
   }
 
@@ -56,7 +60,10 @@ export class MovieApiServiceService {
       `${this.baseurl}/movie/${data}/credits?api_key=${this.apikey}`
     );
   }
-
+  createMovie(movie:Movie):Observable<Movie>{
+    
+    return this.http.post<Movie>(`https://localhost:8080/web/api/addmovie`,movie,this.httpOptions);
+  }
   getMovieDetails(movieId: number): Observable<MovieDetails> {
     return forkJoin({
       movie: this.getMovie(movieId), // Assuming getMovie returns movie details

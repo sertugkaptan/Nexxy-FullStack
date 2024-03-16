@@ -9,11 +9,8 @@ import java.util.List;
 @Entity
 public class Movie {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    @ElementCollection
-    @CollectionTable(name="listOfUsers")
     private List<Long> genre_ids;
 
     private Boolean adult;
@@ -26,10 +23,10 @@ public class Movie {
     private String overview;
     private String poster_path;
     private String title;
-    private Date release_date;
+    private String release_date;
     private Boolean video;
-    private Long popularity;
-    private Long vote_average;
+    private Double popularity;
+    private Double vote_average;
     private Long vote_count;
 
 
