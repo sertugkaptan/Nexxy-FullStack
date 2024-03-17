@@ -1,7 +1,7 @@
 import { NgClass } from '@angular/common';
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute, Router, RouterOutlet } from '@angular/router';
-import { Subscription } from 'rxjs';
+import { Subscription, map } from 'rxjs';
 import { slideInAnimation } from '../../app.animation';
 import { MOVIE_ROUTE } from '../../app.routes';
 import { MovieApiServiceService } from '../../service/movie-api-service.service';
@@ -39,12 +39,11 @@ export class HomeComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
-    
     const movieDetails: MovieDetailsResolved = this.route.snapshot.data['data'];
-    this.service.getMovies();
     this.bannerSub = movieDetails.bannerMovies.subscribe((data) => {
       this.bannerResult = data;
-      this.service.createMovie(data[0].movie);
+      
+      this.service.createMovie(data[0].movie).subscribe(data=>console.log(data));
     });
     this.trendingSub = movieDetails.trendingMovies.subscribe((data) => {
       this.carouselItems = this.pipe.transform(data, 6);

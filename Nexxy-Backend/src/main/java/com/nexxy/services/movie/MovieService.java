@@ -10,6 +10,8 @@ public interface MovieService {
 
     public List<Movie> getBannerMovies();
 
-    public Movie addMovies(Movie movie);
+    public Movie saveMovie(Movie movie);
+
+    public Movie getMovie(Long id);
 
 }

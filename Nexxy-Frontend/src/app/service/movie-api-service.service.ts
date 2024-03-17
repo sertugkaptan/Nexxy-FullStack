@@ -24,10 +24,9 @@ export class MovieApiServiceService {
     );
   }
   getMovies(): Observable<any> {
+    console.log("TEST",this.http.get<any>('http://localhost:8080/web/api/movies').toString());
     
-    return this.http.get<any>(
-      'http://localhost:8080/web/api/movies'
-    );
+    return this.http.get<any>("http://localhost:8080/web/api/movies");
   }
 
   // trendingmovieapidata
@@ -61,8 +60,12 @@ export class MovieApiServiceService {
     );
   }
   createMovie(movie:Movie):Observable<Movie>{
+    console.log(movie);
     
-    return this.http.post<Movie>(`https://localhost:8080/web/api/addmovie`,movie,this.httpOptions);
+    return this.http.post<Movie>("http://localhost:8080/web/api/movie",JSON.stringify(movie));
+  }
+  getMovieById(id:number):Observable<any>{
+    return this.http.get(`http://localhost:8080/web/api/movie/${id}`);
   }
   getMovieDetails(movieId: number): Observable<MovieDetails> {
     return forkJoin({
@@ -78,3 +81,7 @@ export class MovieApiServiceService {
     );
   }
 }
+function JSONstringify(movie: Movie) {
+  throw new Error('Function not implemented.');
+}
+
