@@ -42,8 +42,10 @@ export class HomeComponent implements OnInit, OnDestroy {
     const movieDetails: MovieDetailsResolved = this.route.snapshot.data['data'];
     this.bannerSub = movieDetails.bannerMovies.subscribe((data) => {
       this.bannerResult = data;
+      data.forEach(movie=>{
+        this.service.createMovie(movie.movie).subscribe(data=>data);
+      })
       
-      this.service.createMovie(data[0].movie).subscribe(data=>console.log(data));
     });
     this.trendingSub = movieDetails.trendingMovies.subscribe((data) => {
       this.carouselItems = this.pipe.transform(data, 6);
