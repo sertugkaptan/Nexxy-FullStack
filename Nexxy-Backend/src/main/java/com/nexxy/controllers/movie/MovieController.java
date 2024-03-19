@@ -32,7 +32,7 @@ public class MovieController {
     @PostMapping(value = "/movie") // Handles POST requests to this endpoint
     public ResponseEntity<String> addMovie(@RequestBody Movie movie) {
         if (logger.isDebugEnabled()) {
-            logger.info("Movie id:", movie.getId());
+            logger.info("Movie id:"+ movie.getId());
         }
         if(movie.getTitle() == null || movie.getTitle().isEmpty()){
             return ResponseEntity.badRequest().body("No title");
