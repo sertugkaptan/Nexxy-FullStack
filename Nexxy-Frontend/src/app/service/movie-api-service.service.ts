@@ -75,6 +75,9 @@ export class MovieApiServiceService {
       this.httpOptions
     );
   }
+  exportMovies():Observable<any>{
+    return this.http.get(mainUrl+'/export-movies');
+  }
 
   getMovieById(id: number): Observable<any> {
     return this.http.get(mainUrl + '/movie/' + id);

@@ -1,18 +1,17 @@
 import { NgClass } from '@angular/common';
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute, Router, RouterOutlet } from '@angular/router';
-import { Subscription, map } from 'rxjs';
+import { Subscription } from 'rxjs';
 import { slideInAnimation } from '../../app.animation';
 import { MOVIE_ROUTE } from '../../app.routes';
+import { Movie } from '../../Entities/movie/Movie';
+import { MovieDetails } from '../../Entities/moviedetails/MovieDetails';
+import { MovieDetailsResolved } from '../../Entities/resolved/moviedetails/MovieDetailsResolved';
 import { MovieApiServiceService } from '../../service/movie-api-service.service';
 import { ChunkArrayPipe } from '../../util/ChunkArrayPipe';
 import { AUTO_PLAY, YOUTUBE_LINK } from '../../util/Constants';
 import { SafePipe } from '../../util/SafePipe';
 import { SharedModule } from '../../util/SharedModule.module';
-import { VideoInformation } from '../../Entities/videoinformation/VideoInformation';
-import { Movie } from '../../Entities/movie/Movie';
-import { MovieDetailsResolved } from '../../Entities/resolved/moviedetails/MovieDetailsResolved';
-import { MovieDetails } from '../../Entities/moviedetails/MovieDetails';
 @Component({
   selector: 'app-home',
   standalone: true,
@@ -30,6 +29,7 @@ export class HomeComponent implements OnInit, OnDestroy {
   youtubeUrl: string = '';
   showVideo: boolean = false;
   pipe: ChunkArrayPipe;
+  
   constructor(
     private route: ActivatedRoute,
     private router: Router,

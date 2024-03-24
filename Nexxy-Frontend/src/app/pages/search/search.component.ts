@@ -3,6 +3,7 @@ import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { MovieApiServiceService } from '../../service/movie-api-service.service';
 import { SharedModule } from '../../util/SharedModule.module';
 import { MOVIE_ROUTE } from '../../app.routes';
+import { Movie } from '../../Entities/movie/Movie';
 
 @Component({
   selector: 'app-search',
@@ -30,6 +31,9 @@ export class SearchComponent implements OnInit {
       .searchMovieWithName(this.searchForm.value)
       .subscribe((result) => {
         this.searchResult = result.results;
+        result.results.forEach((movie:Movie)=>{
+          this.service.createMovie(movie).subscribe(data=>data);
+        })
       });
   }
   getTrendingMovies() {

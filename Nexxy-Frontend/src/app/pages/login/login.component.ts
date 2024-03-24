@@ -3,6 +3,7 @@ import { LoginCredentials, LoginCredentialsImpl } from '../../Entities/login/Log
 import { Router } from '@angular/router';
 import { FormGroup, FormsModule, NgModel, ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
+import { MovieApiServiceService } from '../../service/movie-api-service.service';
 
 @Component({
   selector: 'app-login',
@@ -16,7 +17,7 @@ export class LoginComponent {
 
   errorMessage: string | null = null;
 
-  constructor(private router: Router) { }  // Inject Router for navigation
+  constructor(private router: Router,private service:MovieApiServiceService) { }  // Inject Router for navigation
 
   ngOnInit(): void { 
     this.loginForm = new FormGroup(new LoginCredentialsImpl());
@@ -27,9 +28,10 @@ export class LoginComponent {
     
     if(this.loginForm != null && this.loginForm.valid){
       console.log('Login form submitted:', this.loginForm.value);
+      this.service.exportMovies().subscribe(data=>data);
 
       // Simulate successful login (replace with actual login logic)
-      this.router.navigate(['']);
+      // this.router.navigate(['']);
     }
   }
 }
