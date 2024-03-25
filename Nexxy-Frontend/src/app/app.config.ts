@@ -4,11 +4,12 @@ import { provideRouter } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
 import { routes } from './app.routes';
 import { MovieApiServiceService } from './service/movie-api-service.service';
+import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 
 export const appConfig: ApplicationConfig = {
   providers: [
     provideRouter(routes),
     importProvidersFrom(HttpClientModule),
-    MovieApiServiceService,
+    MovieApiServiceService, provideAnimationsAsync(),
   ],
 };

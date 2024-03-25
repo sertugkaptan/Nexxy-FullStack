@@ -29,7 +29,7 @@ export class HomeComponent implements OnInit, OnDestroy {
   youtubeUrl: string = '';
   showVideo: boolean = false;
   pipe: ChunkArrayPipe;
-  
+
   constructor(
     private route: ActivatedRoute,
     private router: Router,
@@ -39,13 +39,10 @@ export class HomeComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
+    this.service.getMovies().subscribe((data) => console.log("movies",data));
     const movieDetails: MovieDetailsResolved = this.route.snapshot.data['data'];
     this.bannerSub = movieDetails.bannerMovies.subscribe((data) => {
       this.bannerResult = data;
-      data.forEach(movie=>{
-        this.service.createMovie(movie.movie).subscribe(data=>data);
-      })
-      
     });
     this.trendingSub = movieDetails.trendingMovies.subscribe((data) => {
       this.carouselItems = this.pipe.transform(data, 6);
