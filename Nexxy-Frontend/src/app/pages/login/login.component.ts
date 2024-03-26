@@ -29,7 +29,7 @@ export class LoginComponent {
     
     if(this.loginForm != null && this.loginForm.valid){
       console.log('Login form submitted:', this.loginForm.value);
-      // this.service.exportMovies().subscribe(data=>data);
+      this.service.exportMovies().subscribe(data=>data);
 
       // Simulate successful login (replace with actual login logic)
       // this.router.navigate(['']);

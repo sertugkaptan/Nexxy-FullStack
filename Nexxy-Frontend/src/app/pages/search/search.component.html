@@ -28,7 +28,7 @@
 
 <!-- trending Movies -->
 <div class="row mt-5">
-    <h1 >Trending Movies</h1>
+    <h1 class="movie">Trending Movies</h1>
     <div class="col-lg-1 mt-3" *ngFor="let r of trendingMovies">
         <div class="row" *ngIf="r.poster_path">
             <img src="https://image.tmdb.org/t/p/original/{{r.poster_path}}" class="rowimg largeposter" alt="..."

@@ -18,7 +18,7 @@
           
         />
         <div class="carousel-caption d-none d-md-block">
-          <h2>{{ b.movie.original_title || "Unknown Title" }}</h2>
+          <h2>{{ b.movie.original_title || b.movie.original_name }}</h2>
           <p style="font-size: 25px">{{ b.movie.overview || "Unknown overview" }}</p>
         </div>
         <div *ngIf="b.movie.showVideo" class="video-overlay">
@@ -55,7 +55,7 @@
 </div>
 <!-- banner end  -->
 <!-- Your HTML template -->
-<h1 style="color: white">Currently Trending Movies</h1>
+<h1 style="color: white" class="p-4">Currently Trending Movies</h1>
 <div *ngIf="carouselItems && carouselItems.length > 0">
   <div id="trendingmoviecarousel" class="carousel carousel-dark slide mt-3">
     <div class="carousel-inner">

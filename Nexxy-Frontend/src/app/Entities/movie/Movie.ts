@@ -3,9 +3,11 @@ export interface Movie {
   backdrop_path: string;
   genre_ids: number[];
   id: number;
+  name?:string;
   media_type: string;
   original_language: string;
   original_title: string;
+  original_name?:string;
   overview: string;
   popularity: number;
   poster_path: string;
@@ -34,6 +36,8 @@ export class MovieImpl implements Movie {
   vote_average: number;
   vote_count: number;
   showVideo?: boolean;
+  name: string |undefined;
+  original_name?: string | undefined;
 
   constructor() {
     (this.adult = false),

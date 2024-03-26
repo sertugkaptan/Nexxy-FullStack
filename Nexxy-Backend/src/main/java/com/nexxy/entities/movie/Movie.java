@@ -11,12 +11,13 @@ import java.util.List;
 public class Movie {
     @Id
     private Long id;
-
+    private String name;
     private boolean adult;
     private String backdrop_path;
     private String title;
     private String original_language;
     private String original_title;
+    private String original_name;
     @Column(length = 1000)
     private String overview;
     private String poster_path;
@@ -149,5 +150,21 @@ public class Movie {
 
     public void setVote_count(long vote_count) {
         this.vote_count = vote_count;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getOriginal_name() {
+        return original_name;
+    }
+
+    public void setOriginal_name(String original_name) {
+        this.original_name = original_name;
     }
 }
