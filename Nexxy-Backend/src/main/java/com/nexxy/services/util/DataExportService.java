@@ -1,7 +1,7 @@
 package com.nexxy.services.util;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.nexxy.entities.movie.Movie;
+import com.nexxy.entities.Movie;
 import com.nexxy.repository.MovieRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

@@ -1,6 +1,6 @@
 package com.nexxy.services.movie;
 
-import com.nexxy.entities.movie.Movie;
+import com.nexxy.entities.Movie;
 import com.nexxy.repository.MovieRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

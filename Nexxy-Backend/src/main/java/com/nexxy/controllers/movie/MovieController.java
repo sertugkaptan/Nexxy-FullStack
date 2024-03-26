@@ -1,6 +1,6 @@
 package com.nexxy.controllers.movie;
 
-import com.nexxy.entities.movie.Movie;
+import com.nexxy.entities.Movie;
 import com.nexxy.services.movie.MovieService;
 import com.nexxy.services.util.DataExportService;
 import org.slf4j.Logger;

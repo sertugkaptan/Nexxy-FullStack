@@ -1,4 +1,4 @@
-package com.nexxy.entities.movie;
+package com.nexxy.entities;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.ElementCollection;

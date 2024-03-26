@@ -1,6 +1,6 @@
 package com.nexxy.services.movie;
 
-import com.nexxy.entities.movie.Movie;
+import com.nexxy.entities.Movie;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
