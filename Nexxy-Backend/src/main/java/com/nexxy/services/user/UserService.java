@@ -1,8 +1,10 @@
 package com.nexxy.services.user;
 
-import org.springframework.stereotype.Service;
+import com.nexxy.entities.User;
 
-@Service
-public class UserService {
+import java.util.List;
 
+public interface UserService {
+
+    public List<User> getAllUsers();
 }
