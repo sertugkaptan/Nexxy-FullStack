@@ -32,6 +32,11 @@
               >Login</a
             >
           </li>
+          <li class="nav-item">
+            <a class="nav-link" id="openLoginModal" (click)="toggleRegisterModal()"
+              >Register</a
+            >
+          </li>
         </ul>
       </div>
     </div>
@@ -39,7 +44,7 @@
 </div>
 <div class="background"*ngIf="isOpen">
   <div class="popup" *ngIf="isOpen">
-    <login-component (closed)="closeLoginPopup()"></login-component>
+    <login-component (closed)="closeLoginPopup()"  [isRegister]="isRegister"></login-component>
     <div
       class="popup-background"
       *ngIf="isOpen"

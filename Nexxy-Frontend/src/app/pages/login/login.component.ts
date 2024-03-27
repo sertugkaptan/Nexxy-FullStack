@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { LoginCredentials, LoginCredentialsImpl } from '../../Entities/login/LoginCredentials';
 import { Router } from '@angular/router';
 import { FormGroup, FormsModule, NgModel, ReactiveFormsModule } from '@angular/forms';
@@ -14,7 +14,7 @@ import { MovieApiServiceService } from '../../service/movie-api-service.service'
 })
 export class LoginComponent {
   loginForm! : FormGroup;
-
+  @Input() isRegister: boolean = false;
   errorMessage: string | null = null;
   @Output() closed = new EventEmitter<void>(); // Event to signal closure
 
@@ -22,11 +22,15 @@ export class LoginComponent {
 
   ngOnInit(): void { 
     this.loginForm = new FormGroup(new LoginCredentialsImpl());
+    console.log(this.isRegister);
   }
 
   onSubmit() {
     console.log(this.loginForm);
-    
+    if(this.isRegister){
+      
+    }
+
     if(this.loginForm != null && this.loginForm.valid){
       console.log('Login form submitted:', this.loginForm.value);
       this.service.exportMovies().subscribe(data=>data);

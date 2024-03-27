@@ -27,6 +27,8 @@ export class AppComponent implements OnInit, OnDestroy {
   readonly LOGIN_ROUTE = LOGIN_ROUTE;
   navbg: any;
   displayNavbar: boolean = true;
+  isRegister:boolean=false;
+
   constructor(private dialog:MatDialog){
     
   }
@@ -40,7 +42,16 @@ export class AppComponent implements OnInit, OnDestroy {
   isOpen = false; // Flag to track login popup visibility
 
   toggleLoginModal() {
-    this.isOpen = !this.isOpen ;
+    this.isOpen = !this.isOpen;
+    if(this.isOpen){
+      document.body.style.overflow = 'hidden';
+    }else{
+      document.body.style.overflow = 'auto';
+    }
+  }
+  toggleRegisterModal(){
+    this.isOpen = !this.isOpen;
+    this.isRegister = true;
     if(this.isOpen){
       document.body.style.overflow = 'hidden';
     }else{

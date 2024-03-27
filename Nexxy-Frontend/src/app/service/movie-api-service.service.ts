@@ -4,6 +4,7 @@ import { Observable, forkJoin, map } from 'rxjs';
 import { MovieDetails } from '../Entities/moviedetails/MovieDetails';
 import { VideoInformation } from '../Entities/videoinformation/VideoInformation';
 import { Movie } from '../Entities/movie/Movie';
+import { User } from '../Entities/login/User';
 
 const mainUrl = 'http://localhost:8080/web/api';
 @Injectable({
@@ -26,7 +27,7 @@ export class MovieApiServiceService {
       `${this.baseurl}/trending/all/week?api_key=${this.apikey}`
     );
   }
-  
+
   getMovies(): Observable<any> {
     console.log(
       'TEST',
@@ -75,8 +76,14 @@ export class MovieApiServiceService {
       this.httpOptions
     );
   }
-  exportMovies():Observable<any>{
-    return this.http.get(mainUrl+'/export-movies');
+
+  createUser(user: User): Observable<any> {
+    let jsonUser = JSON.stringify(user);
+    return this.http.post<User>(mainUrl + '/user', jsonUser, this.httpOptions);
+  }
+
+  exportMovies(): Observable<any> {
+    return this.http.get(mainUrl + '/export-movies');
   }
 
   getMovieById(id: number): Observable<any> {
