@@ -1,19 +1,19 @@
 export interface User{
-    id:number;
     username:string;
     email:string;
     password:string;
+    moviesWatched:number[];
 }
 
 export class UserImpl implements User{
-    id: number;
     username: string;
     email: string;
     password: string;
+    moviesWatched: number[];
     constructor(){
-        this.id= -1;
         this.email='';
         this.username = '';
         this.password = '';
+        this.moviesWatched = [];
     }
 }

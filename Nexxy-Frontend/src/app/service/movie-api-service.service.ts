@@ -79,6 +79,8 @@ export class MovieApiServiceService {
 
   createUser(user: User): Observable<any> {
     let jsonUser = JSON.stringify(user);
+    console.log("user",jsonUser);
+    
     return this.http.post<User>(mainUrl + '/user', jsonUser, this.httpOptions);
   }
 
