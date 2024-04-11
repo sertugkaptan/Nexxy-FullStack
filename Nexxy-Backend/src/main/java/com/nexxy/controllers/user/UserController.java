@@ -4,6 +4,7 @@ import com.nexxy.entities.User;
 import com.nexxy.repository.UserRepository;
 import com.nexxy.services.user.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -14,12 +15,12 @@ public class UserController {
     UserService userService;
 
     @PostMapping("/user")
-    public String createUser(@RequestBody User user){
+    public ResponseEntity<String> createUser(@RequestBody User user){
         User success = userService.createUser(user);
         if(user == null){
-            return "Failed To Execute";
+            return ResponseEntity.ok("Successfully added!");
         }else {
-            return "Successfully executed";
+            return ResponseEntity.badRequest().body("Failed");
         }
     }
 }

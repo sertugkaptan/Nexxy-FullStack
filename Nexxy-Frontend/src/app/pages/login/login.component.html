@@ -1,5 +1,5 @@
-<div class="p-5" style="margin-top: 8%;">
-  <div class="mx-auto form-block border  p-5 mb-5 bg-white rounded">
+  <div class="p-5 mx-auto form-block border  p-5 mb-5 bg-white rounded large-form">
+    <button class="close" (click)="closed.emit()">X</button>
     <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
       <div class="mb-3 form-group">
         <label for="exampleInputEmail1" class="form-label">Email address</label>
@@ -24,4 +24,3 @@
       <button type="submit" class="btn btn-primary">Submit</button>
     </form>
   </div>
-</div>

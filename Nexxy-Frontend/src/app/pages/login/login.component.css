@@ -1,4 +1,13 @@
 .form-block {
-    max-width: 500px; /* Adjust width as needed */
-  }
-  
+  max-width: 800px; /* Adjust width as needed */
+}
+
+.close {
+  position: absolute;
+  top: 10px; /* Adjust for spacing */
+  right: 10px; /* Adjust for spacing */
+  background: none; /* Remove default button background */
+  border: none; /* Remove default button border */
+  font-size: 1.5rem; /* Adjust font size for "X" */
+  cursor: pointer; /* Indicate clickable element */
+}

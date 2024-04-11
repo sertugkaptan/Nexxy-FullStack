@@ -28,6 +28,7 @@ export class AppComponent implements OnInit, OnDestroy {
   navbg: any;
   displayNavbar: boolean = true;
   isRegister:boolean=false;
+  isOpen = false; // Flag to track login popup visibility
 
   constructor(private dialog:MatDialog){
     
@@ -39,8 +40,7 @@ export class AppComponent implements OnInit, OnDestroy {
     const scrollY = window.scrollY;
     this.displayNavbar = scrollY < 20;
   }
-  isOpen = false; // Flag to track login popup visibility
-
+  
   toggleLoginModal() {
     this.isOpen = !this.isOpen;
     if(this.isOpen){
@@ -52,16 +52,23 @@ export class AppComponent implements OnInit, OnDestroy {
   toggleRegisterModal(){
     this.isOpen = !this.isOpen;
     this.isRegister = true;
-    if(this.isOpen){
+    this.toggleScroll();
+  }
+
+  private toggleScroll() {
+    if (this.isOpen) {
       document.body.style.overflow = 'hidden';
-    }else{
+    } else {
       document.body.style.overflow = 'auto';
     }
   }
 
   closeLoginPopup() {
     this.isOpen = false;
+    this.toggleScroll();
   }
+
+
   ngOnDestroy() {
     window.removeEventListener('scroll', this.onScroll); // Clean up listener
   }
